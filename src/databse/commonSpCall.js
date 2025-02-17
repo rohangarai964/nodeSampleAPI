@@ -22,7 +22,7 @@ const commonSpCall={
    
 };
 
-const executeApplicationSchemaSp=asyncHandler()
+
 function inputType(type,length){
     switch(type){
         case "Int":
