@@ -8,6 +8,8 @@ const {
     refreshAccessToken,
     getProjectSearch,
     defaultProjectBasedOnUserRole,
+    getResourceRequisition,
+    insertUpdateResourceRequisitions,
     
 }=require("../controllers/index");
 const jwtVerify = require('../middleware/auth.middleware');
@@ -20,6 +22,7 @@ router.post('/v1/auth/refresh-token',refreshAccessToken)
 router.use(jwtVerify)
 router.post('/v1/project/getProjectSearch',getProjectSearch)
 router.post('/v1/project/getDefaultProjectSearch',defaultProjectBasedOnUserRole)
+router.route('/v1/resource/resourceRequisitions').get(getResourceRequisition).post(insertUpdateResourceRequisitions)
 
 
 module.exports=router
