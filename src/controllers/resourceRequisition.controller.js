@@ -49,7 +49,21 @@ const insertUpdateResourceRequisitions=asyncHandler(async (req,res,next)=>{
         )
     )
 })
+const deleteResourceRequisition=asyncHandler(async (req,res,next)=>{
+    const requisitionId=req.params.requisitionId
+    //not needed this validation. for safety purpose i added.
+    if(!requisitionId){
+        throw new ApiError(400,"requisitionId missing")
+    }
+    const params=[
+        {name:"p_MRRID",type:"Int",value:requisitionId}
+    ]
+    await commonSpCall.executeApplicationSchemaSp("SpDeleteResourceRequisitionByMRRID",params)
+    return res.status(200).json(new ApiResponse(200,null,"success"))
+    
+})
 module.exports={
     getResourceRequisition,
-    insertUpdateResourceRequisitions
+    insertUpdateResourceRequisitions,
+    deleteResourceRequisition
 }

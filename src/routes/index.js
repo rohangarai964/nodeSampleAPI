@@ -10,6 +10,7 @@ const {
     defaultProjectBasedOnUserRole,
     getResourceRequisition,
     insertUpdateResourceRequisitions,
+    deleteResourceRequisition,
     
 }=require("../controllers/index");
 const jwtVerify = require('../middleware/auth.middleware');
@@ -23,6 +24,7 @@ router.use(jwtVerify)
 router.post('/v1/project/getProjectSearch',getProjectSearch)
 router.post('/v1/project/getDefaultProjectSearch',defaultProjectBasedOnUserRole)
 router.route('/v1/resource/resourceRequisitions').get(getResourceRequisition).post(insertUpdateResourceRequisitions)
+router.route('/v1/resource/resourceRequisition/:requisitionId').delete(deleteResourceRequisition)
 
 
 module.exports=router
